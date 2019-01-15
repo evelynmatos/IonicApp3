@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ListaMensagemPage } from '../lista-mensagem/lista-mensagem';
 import { LoginPage } from '../login/login';
-import { ListaPostPage } from '../lista-post/lista-post';
 import { AlterarFotoPage } from '../alterar-foto/alterar-foto';
+import { ListaPostPage } from '../lista-post/lista-post';
 
 /**
  * Generated class for the TelaUsuarioPage page.
@@ -37,5 +37,5 @@ export class TelaUsuarioPage {
     openAlterarFoto(): any{
     this.navCtrl.push(AlterarFotoPage.name); 
   }
-}
+}  
 

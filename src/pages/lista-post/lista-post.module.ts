@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ListaPostPage } from './lista-post';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { ListaPostPage } from './lista-post';
   ],
   imports: [
     IonicPageModule.forChild(ListaPostPage),
+    ComponentsModule
   ],
 })
 export class ListaPostPageModule {}

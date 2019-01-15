@@ -7,13 +7,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { DetalhesMensagemPage } from '../pages/detalhes-mensagem/detalhes-mensagem';
+import { CompPostComponent } from '../components/comp-post/comp-post';
+import { ListaPostPage } from '../pages/lista-post/lista-post';
 
 
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
-    DetalhesMensagemPage
+    
+    
     
   ],
   imports: [
@@ -24,7 +27,8 @@ import { DetalhesMensagemPage } from '../pages/detalhes-mensagem/detalhes-mensag
   entryComponents: [
     MyApp,
     LoginPage,
-    DetalhesMensagemPage
+    
+    
   ],
   providers: [
     StatusBar,
