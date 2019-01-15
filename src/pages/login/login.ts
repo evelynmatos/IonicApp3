@@ -23,7 +23,7 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  openMinhaPag(){
+  openTelaUsuario(){
     this.navCtrl.setRoot(TelaUsuarioPage.name);
   }
 }

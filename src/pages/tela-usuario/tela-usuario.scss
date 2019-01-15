@@ -1,3 +1,30 @@
 page-tela-usuario {
 
+    .item ion-avatar img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .toolbar ion-title {
+       background-color:#335AD9;
+    }
+
+    .toolbar-title {
+        text-align: center;
+        font-family: serif;
+        font-size: 1.7rem;
+        font-weight: 0;
+        color: white;
+        pointer-events: auto;
+      }
+
+    #sair {
+        background-color: red;
+      }
+      
+    .item.item-block .item-inner {
+    padding-right: 8px;
+    padding-right: 8px;
+    border-bottom: 0;
+  }
 }

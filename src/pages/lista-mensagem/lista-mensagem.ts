@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DetalhesMensagemPage } from '../detalhes-mensagem/detalhes-mensagem';
 
 /**
  * Generated class for the ListaMensagemPage page.
@@ -18,8 +19,8 @@ export class ListaMensagemPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ListaMensagemPage');
-  }
+  openDetalhesMensagem(): any{
+    this.navCtrl.push(DetalhesMensagemPage); 
+    }
 
 }
