@@ -1,0 +1,46 @@
+page-login {
+
+    img {
+        width: 230px;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .button {
+          
+      color: #fff;
+      background-color: #FCA12F;
+    }
+
+    .item-inner {
+        font-family: serif;
+        font-size: smaller;
+    }
+
+    .text-input{
+        border: 8;
+        border: 6px dashed #D2E1FD;
+        background-color:#D2E1FD;
+    }
+    
+      .toolbar-title {
+        text-align: center;
+        font-family: serif;
+        font-size: 1.7rem;
+        font-weight: 0;
+        color: white;
+        pointer-events: auto;
+      }
+
+      .toolbar-background {
+        background-color: #335AD9;
+    }
+    
+      .item-block .item-inner {
+        padding-right: 8px;
+        padding-right: 8px;
+        border-bottom: 0; 
+      }
+
+    }
+

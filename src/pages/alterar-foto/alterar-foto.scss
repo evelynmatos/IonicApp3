@@ -1,0 +1,51 @@
+page-alterar-foto {
+
+        h6{
+                text-align: center;
+        }
+        
+        img {
+            width: 250px;
+            display: block;
+            margin: 0 auto;
+        }
+    
+    
+        #icon1 {
+            font-size: 4.5em;
+            margin: 0;
+            color: pink;
+        }
+    
+        #icon2 {
+            font-size: 4.5em;
+            margin: 0;
+            color: dodgerblue;
+            float: right;
+    
+        }
+    
+        .toolbar ion-title {
+            background: #335AD9;
+          }
+          
+          .bar-button-default-ios,
+          .bar-button-default.bar-button-ios-default,
+          .bar-button-clear-ios-default {
+            color: white;
+            background-color: transparent;
+          }
+    
+          .toolbar-title {
+            text-align: center;
+            font-family: serif;
+            font-size: 1.7rem;
+            font-weight: 0;
+            color: white;
+            pointer-events: auto;
+          }
+       
+           
+    
+    }
+
