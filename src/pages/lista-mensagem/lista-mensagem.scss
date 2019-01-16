@@ -33,6 +33,16 @@ page-lista-mensagem {
         border-top: 0;
     }
 
+    .searchbar .searchbar-input {
+        background-color: #335AD9;
+      }
    
+      .searchbar {
+        border-bottom: 0;
+        background: #335AD9;
+      }
 
+      .searchbar-ios .searchbar-search-icon {
+        right: 19px;
+      }
 }

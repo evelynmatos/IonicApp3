@@ -12,8 +12,10 @@
               <img src="assets/imgs/nome.png" (click)="openAlterarFoto()">
             </ion-avatar>
               <p>Evelyn Matos</p>
-                <i><p>ematos</p></i>
+                <i><p>ematos</p></i><br>
         </ion-item>
+        
+        <comp-post *ngFor="let item of list "[feed]= "item" ></comp-post>
 
    <button ion-button block (click)="openListaMensagem()">MENSAGENS</button><br>
    <button ion-button block (click)="openListaPost()">POSTS</button><br><br><br>

@@ -5,30 +5,27 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { LoginPage } from '../pages/login/login';
-import { DetalhesMensagemPage } from '../pages/detalhes-mensagem/detalhes-mensagem';
-import { CompPostComponent } from '../components/comp-post/comp-post';
-import { ListaPostPage } from '../pages/lista-post/lista-post';
+import { ComponentsModule } from '../components/components.module';
+import { LoginPageModule } from '../pages/login/login.module';
 
 
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage,
-    
     
     
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    ComponentsModule,
+    LoginPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage,
     
-    
+     
   ],
   providers: [
     StatusBar,
