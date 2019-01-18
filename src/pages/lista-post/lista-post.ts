@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DetalhesPostPage } from '../detalhes-post/detalhes-post';
 
 /**
  * Generated class for the ListaPostPage page.
@@ -30,4 +31,5 @@ export class ListaPostPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
+
 }

@@ -16,11 +16,15 @@ import { DetalhesMensagemPage } from '../detalhes-mensagem/detalhes-mensagem';
 })
 export class ListaMensagemPage {
 
+  list = [
+    "I've had a pretty messed up day. If we just dance gold year "
+  ];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
-  openDetalhesMensagem(): any{
-    this.navCtrl.push(DetalhesMensagemPage); 
+  
+   openDetalhesMensagem(mensagem){
+    this.navCtrl.push(DetalhesMensagemPage.name,{'mensagem': mensagem}); 
     }
 
-}
+  }

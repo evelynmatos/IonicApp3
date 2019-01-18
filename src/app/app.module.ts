@@ -12,8 +12,6 @@ import { LoginPageModule } from '../pages/login/login.module';
 @NgModule({
   declarations: [
     MyApp,
-    
-    
   ],
   imports: [
     BrowserModule,
@@ -24,8 +22,6 @@ import { LoginPageModule } from '../pages/login/login.module';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    
-     
   ],
   providers: [
     StatusBar,

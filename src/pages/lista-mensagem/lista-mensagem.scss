@@ -4,26 +4,7 @@ page-lista-mensagem {
         font-size: 2.2em;   
     }
 
-    .toolbar ion-title {
-      background: #335AD9;
-    }
-
-    .toolbar-title {
-        text-align: center;
-        font-family: serif;
-        font-size: 1.7rem;
-        font-weight: 0;
-        color:white;
-        pointer-events: auto;
-      }
-
-    .bar-button-default,
-    .bar-button-default.bar-button-default,
-    .bar-button-clear-default {
-        color: white;
-        background-color: transparent;
-    }
-
+    
     .list > .item-block:last-child,
     .list > .item-wrapper:last-child .item-block {
         border-bottom: 0;
