@@ -10,12 +10,12 @@
 
   <ion-item>
     <ion-label floating><b> Usuário</b></ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" #usuario></ion-input>
   </ion-item>
 
   <ion-item>
       <ion-label floating><b> Senha</b></ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" #password></ion-input>
   </ion-item>
 
   <pre>
@@ -25,7 +25,7 @@
   </ion-item>
 </pre>
 
-     <button ion-button block (click)="openTelaUsuario()">LOGIN</button>
+     <button ion-button block (click)="openTelaUsuario(usuario.value, password.value)">LOGIN</button>
 
   
 </ion-content>

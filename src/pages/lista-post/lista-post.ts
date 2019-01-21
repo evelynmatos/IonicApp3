@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DetalhesPostPage } from '../detalhes-post/detalhes-post';
+import { PostProvider } from '../../providers/post/post';
 
 /**
  * Generated class for the ListaPostPage page.
@@ -13,23 +14,25 @@ import { DetalhesPostPage } from '../detalhes-post/detalhes-post';
 @Component({
   selector: 'page-lista-post',
   templateUrl: 'lista-post.html',
+  providers:[
+    PostProvider
+  ]
 })
 export class ListaPostPage {
   
-  list = [{
-     autor : "webmaster",
-     titulo: "teste Lorem ipsum",
-     data: "2019-01-02T17:14:34.810Z",
-     mensagem:"consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-  },{
-    autor : "webmaster",
-    titulo: "teste Lorem ipsum",
-    data: "2019-01-02T17:14:34.810Z",
-    mensagem:"consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
- }];
+  public list:any = new Array;    
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,  private postProv: PostProvider) {
   }
 
+  ionViewDidLoad() {
+    this.postProv.getListaPost().subscribe(
+    (data)=>{
+      this.list = data;
+      console.log(data);
+    }, error=> {
+      console.log(error);
+    }
+    )
+}
 }

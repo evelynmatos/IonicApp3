@@ -4,6 +4,7 @@ import { ListaMensagemPage } from '../lista-mensagem/lista-mensagem';
 import { LoginPage } from '../login/login';
 import { AlterarFotoPage } from '../alterar-foto/alterar-foto';
 import { ListaPostPage } from '../lista-post/lista-post';
+import { PostProvider } from '../../providers/post/post';
 
 /**
  * Generated class for the TelaUsuarioPage page.
@@ -16,17 +17,15 @@ import { ListaPostPage } from '../lista-post/lista-post';
 @Component({
   selector: 'page-tela-usuario',
   templateUrl: 'tela-usuario.html',
+  providers: [
+    PostProvider
+  ]
 })
 export class TelaUsuarioPage {
 
-  list = {
-    autor : "webmaster",
-    titulo: "teste Lorem ipsum",
-    data: "2019-01-02T17:14:34.810Z",
-    mensagem:"consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-  }
+  post:any;  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private postProv: PostProvider) {
   }
 
     openListaMensagem(){
@@ -44,5 +43,16 @@ export class TelaUsuarioPage {
     openAlterarFoto(){
     this.navCtrl.push(AlterarFotoPage.name); 
   }
+
+    ionViewDidLoad() {
+      this.postProv.getLatestPost().subscribe(
+        (data) =>{
+          this.post = data;
+          console.log(data);
+        }, error=> {
+          console.log(error);
+
+        })
+    }
 }  
 

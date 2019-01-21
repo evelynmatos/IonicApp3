@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TelaUsuarioPage } from '../tela-usuario/tela-usuario';
+import { LoginProvider } from '../../providers/login/login';
 
 /**
  * Generated class for the LoginPage page.
@@ -13,19 +14,31 @@ import { TelaUsuarioPage } from '../tela-usuario/tela-usuario';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
+  providers:[
+    LoginProvider
+  ]
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public objeto_login = {
+    login: "evelyn",
+    password: "1234" 
+  };
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private login: LoginProvider ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  openTelaUsuario(username, password){
+    this.login.getLogin(username, password).then((result)=>{
+      console.log(result);
+      this.navCtrl.setRoot(TelaUsuarioPage.name);
+
+    }).catch((error:any)=>{
+       console.log(error.error.erro.codigo)
+    });
+
+    }
   }
 
-  openTelaUsuario(){
-    this.navCtrl.setRoot(TelaUsuarioPage.name);
-  }
-}
 
-
+  

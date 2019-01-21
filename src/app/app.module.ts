@@ -7,6 +7,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { ComponentsModule } from '../components/components.module';
 import { LoginPageModule } from '../pages/login/login.module';
+import { LoginProvider } from '../providers/login/login';
+import { PostProvider } from '../providers/post/post';
+import { HttpClientModule } from '@angular/common/http';
+import { MensagemProvider } from '../providers/mensagem/mensagem';
 
 
 @NgModule({
@@ -17,7 +21,8 @@ import { LoginPageModule } from '../pages/login/login.module';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     ComponentsModule,
-    LoginPageModule
+    LoginPageModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -26,7 +31,10 @@ import { LoginPageModule } from '../pages/login/login.module';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    LoginProvider,
+    PostProvider,
+    MensagemProvider
   ]
 })
 export class AppModule {}

@@ -14,8 +14,9 @@
               <p>Evelyn Matos</p>
                 <i><p>ematos</p></i><br>
         </ion-item>
-        
-        <comp-post [feed]= "list" ></comp-post>
+        <div *ngIf= "post != null">
+        <comp-post [feed]= "post" ></comp-post>
+      </div>
 
    <button ion-button block (click)="openListaMensagem()">MENSAGENS</button><br>
    <button ion-button block (click)="openListaPost()">POSTS</button><br><br><br>
