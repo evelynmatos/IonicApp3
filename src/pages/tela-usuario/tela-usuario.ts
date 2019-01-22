@@ -5,6 +5,7 @@ import { LoginPage } from '../login/login';
 import { AlterarFotoPage } from '../alterar-foto/alterar-foto';
 import { ListaPostPage } from '../lista-post/lista-post';
 import { PostProvider } from '../../providers/post/post';
+import { LoginProvider } from '../../providers/login/login';
 
 /**
  * Generated class for the TelaUsuarioPage page.
@@ -24,8 +25,10 @@ import { PostProvider } from '../../providers/post/post';
 export class TelaUsuarioPage {
 
   post:any;  
+  user = this.navParams.get("user");
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private postProv: PostProvider) {
+ 
+  constructor(public navCtrl: NavController, public navParams: NavParams, private postProv: PostProvider, private login: LoginProvider) {
   }
 
     openListaMensagem(){
@@ -45,14 +48,15 @@ export class TelaUsuarioPage {
   }
 
     ionViewDidLoad() {
+      console.log(this.user)
       this.postProv.getLatestPost().subscribe(
         (data) =>{
           this.post = data;
           console.log(data);
         }, error=> {
           console.log(error);
-
         })
     }
-}  
-
+      
+   
+}

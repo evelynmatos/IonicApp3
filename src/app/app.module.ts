@@ -34,7 +34,8 @@ import { MensagemProvider } from '../providers/mensagem/mensagem';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LoginProvider,
     PostProvider,
-    MensagemProvider
+    MensagemProvider,
+    
   ]
 })
 export class AppModule {}

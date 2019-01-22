@@ -1,5 +1,5 @@
 page-alterar-foto {
-
+  
         h6{
             text-align: center;
         }
@@ -12,19 +12,22 @@ page-alterar-foto {
     
     
         #icon1 {
-            font-size: 4.5em;
+            font-size: 5em;
             margin: 0;
-            color: pink;
+            color: dodgerblue;
+            line-height: 4;
+            min-width: 195px;
         }
     
         #icon2 {
-            font-size: 4.5em;
+            font-size: 4em;
             margin: 0;
             color: dodgerblue;
-            float: right;
-    
+            line-height: 4;   
         }
-
-    
-    }
+        
+          p{
+             text-align: center;
+          }
+        }
 

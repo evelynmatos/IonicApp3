@@ -10,8 +10,13 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class MensagemProvider {
 
+  url = "http://aulas.getsandbox.com/msgs/ID_USUARIO";
+
   constructor(public http: HttpClient) {
     console.log('Hello MensagemProvider Provider');
   }
 
+    getMensagens(user){
+    return this.http.get(this.url+ user);
+  }
 }

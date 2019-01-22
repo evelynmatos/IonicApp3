@@ -11,8 +11,10 @@
           <ion-avatar item-start>
               <img src="assets/imgs/nome.png" (click)="openAlterarFoto()">
             </ion-avatar>
-              <p>Evelyn Matos</p>
-                <i><p>ematos</p></i><br>
+            <div *ngIf= "user != null">
+              <p>{{user.nome}}</p>
+                <i><p>{{user.login}}</p></i><br>
+                </div>
         </ion-item>
         <div *ngIf= "post != null">
         <comp-post [feed]= "post" ></comp-post>
