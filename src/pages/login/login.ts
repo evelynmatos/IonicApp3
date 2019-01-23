@@ -16,6 +16,16 @@ import { TelaUsuarioPage } from '../tela-usuario/tela-usuario';
 })
 export class LoginPage {
 
+  
+  dadosUsuario ={
+    user: '',
+    password:''
+    };
+
+ desabilitarBotao = true;
+
+ habilitarBotao: boolean = false;
+ 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -26,6 +36,7 @@ export class LoginPage {
   openTelaUsuario(){
     this.navCtrl.setRoot(TelaUsuarioPage.name);
   }
+
 }
 
 
