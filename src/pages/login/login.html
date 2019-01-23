@@ -14,8 +14,7 @@
 
   <ion-item>
       <ion-label floating><b> Senha</b></ion-label>
-      <ion-input style="-webkit-text-security: disc;" #password id="password" type="number" pattern="[0-9]" inputmode="numeric" 
-                  minlength="4" maxlength="10" [(ngModel)]="dadosUsuario.password"></ion-input>  
+      <ion-input style="-webkit-text-security: disc;" #password id="password" type="number" pattern="[0-9]" inputmode="numeric" minlength="4" maxlength="10" [(ngModel)]="dadosUsuario.password"></ion-input>  
   </ion-item>
 
   <pre>
@@ -25,6 +24,6 @@
   </ion-item>
 </pre>
 
-     <button ion-button block (click)="openTelaUsuario()" [disabled]="dadosUsuario.user.length <3 || dadosUsuario.password.length <4">LOGIN</button>
+     <button ion-button block (click)="TelaUsuario()" [disabled]="dadosUsuario.user <4 || dadosUsuario.password <5">LOGIN</button>
   
 </ion-content>

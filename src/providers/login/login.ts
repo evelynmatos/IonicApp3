@@ -5,7 +5,7 @@ import hasha from 'hasha';
 @Injectable()
 export class LoginProvider {
 
-  private base = "http://aulas.getsandbox.com";
+  private base = " http://aulas2.getsandbox.com";
 
   constructor(public http: HttpClient) {
     console.log('Hello LoginProvider Provider');
