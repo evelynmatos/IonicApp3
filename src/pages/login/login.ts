@@ -22,12 +22,17 @@ import { AlertController } from 'ionic-angular';
 })
 export class LoginPage {
 
-  user;
-  public objeto_login = {
-    login: "evelyn",
-    password: "1234" 
-  };
+  
+  dadosUsuario ={
+    user: '',
+    password:''
+    };
 
+ desabilitarBotao = true;
+
+ habilitarBotao: boolean = false;
+ 
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, private login: LoginProvider, public alertCtrl: AlertController) {
   }
 
