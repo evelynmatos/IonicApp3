@@ -18,13 +18,11 @@ export class DetalhesPostPage {
   item= this.navParams.get('item');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-
-    
-    console.log(this.item)
+  
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DetalhesMensagemPage');
+    this.item.data = this.navParams.get('data'); 
   }
 
 }

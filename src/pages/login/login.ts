@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TelaUsuarioPage } from '../tela-usuario/tela-usuario';
-import { LoginProvider } from '../../providers/login/login';
 import { AlertController } from 'ionic-angular';
+import { LoginProvider } from '../../providers/login/login';
 
 
 /**
@@ -17,27 +17,28 @@ import { AlertController } from 'ionic-angular';
   selector: 'page-login',
   templateUrl: 'login.html',
   providers:[
-    LoginProvider
+    LoginProvider,
   ]
 })
 export class LoginPage {
-
   
   dadosUsuario ={
     user: '',
-    password:''
+    password: ''
     };
 
  desabilitarBotao = true;
 
  habilitarBotao: boolean = false;
  
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams, private login: LoginProvider, public alertCtrl: AlertController) {
-  }
+   constructor(public navCtrl: NavController, 
+               public navParams: NavParams, 
+               private login: LoginProvider, 
+               public alertCtrl: AlertController) {}
 
-  TelaUsuario(username, password){
-    this.login.getLogin(username, password).then((result)=>{
+  openTelaUsuario(){
+    
+    this.login.getLogin(this.dadosUsuario.user, this.dadosUsuario.password).then((result)=>{
       console.log("result" + result);
        this.navCtrl.setRoot(TelaUsuarioPage.name, {'user':result});
 

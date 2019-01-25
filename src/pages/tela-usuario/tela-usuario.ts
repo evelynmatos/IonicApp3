@@ -5,7 +5,6 @@ import { LoginPage } from '../login/login';
 import { AlterarFotoPage } from '../alterar-foto/alterar-foto';
 import { ListaPostPage } from '../lista-post/lista-post';
 import { PostProvider } from '../../providers/post/post';
-import { LoginProvider } from '../../providers/login/login';
 
 /**
  * Generated class for the TelaUsuarioPage page.
@@ -28,11 +27,12 @@ export class TelaUsuarioPage {
   user = this.navParams.get("user");
 
  
-  constructor(public navCtrl: NavController, public navParams: NavParams, private postProv: PostProvider, private login: LoginProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private postProv: PostProvider) {
   }
 
     openListaMensagem(){
-    this.navCtrl.push(ListaMensagemPage.name); 
+    this.navCtrl.push(ListaMensagemPage.name, {'id':this.user.id}); 
+    console.log(this.user.id)
     }
   
     openLogout(){

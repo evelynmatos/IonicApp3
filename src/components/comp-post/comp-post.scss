@@ -1,2 +1,12 @@
 comp-post {
+    .text {
+        max-width: 60ch; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    } 
+    
+    .card {
+         border-radius: 10px;
+    }
 }

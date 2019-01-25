@@ -10,17 +10,19 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class PostProvider {
 
-  private post = " http://aulas2.getsandbox.com";
+  private post = "http://aulas2.getsandbox.com";
 
   constructor(public http: HttpClient) {
     console.log('Hello PostProvider Provider');
   }
 
+  getListaPost(){
+    return this.http.get(this.post + "/posts");
+  }
+  
   getLatestPost(){
     return this.http.get(this.post + "/last_post");
   }
 
-  getListaPost(){
-    return this.http.get(this.post + "/posts");
-  }
+  
 }

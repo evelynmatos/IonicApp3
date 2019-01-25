@@ -1,19 +1,18 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title id="msg">Mensagens</ion-title>  
-</ion-navbar>
-<ion-searchbar [(ngModel)]="myInput" 
-        [showCancelButton]="shouldShowCancel" 
-        (ionInput)="onInput($event)" 
-        (ionCancel)="onCancel($event)">
+    <ion-navbar>
+        <ion-title>Mensagens</ion-title>
+    </ion-navbar>
+    <ion-searchbar placeholder="search" [(ngModel)]="search" [formControl]="controleBusca" (ionInput)="onSearchInput">
     </ion-searchbar>
 </ion-header>
 
 <ion-content padding>
-    <ion-card *ngFor="let mensagem of list" (click)="openDetalhesMensagem(mensagem)">
-        <ion-card-content>
-            {{mensagem}}
-        </ion-card-content>
-    </ion-card>
+       <ion-item *ngFor="let mensagem of array" (click)="openDetalhesMensagem(mensagem)">
+            <p>{{mensagem}}</p>
+        </ion-item>
+    
+    <ion-item *ngIf="!array?.length">
+        <p>Nenhuma mensagem encontrada</p>
+    </ion-item>
 
 </ion-content>

@@ -1,9 +1,12 @@
-<ion-card  (click)="openDetalhesPost()">
-    <ion-card-content>
-     <h2>{{feed.autor}}</h2>
-    <h3>{{feed.titulo}}</h3>
+<ion-card (click)="openDetalhesPost()">
+    <ion-card-content class = "text">
+      <h2>Autor: {{feed.autor}}</h2>
+
+    <p>Titulo: {{feed.titulo}}</p>
+
     <p>{{feed.data}}</p>
    
-  <p>{{feed.mensagem}}</p>  
+  <p>Mensagem: {{feed.mensagem}}</p>  
   </ion-card-content>
 </ion-card>
+
