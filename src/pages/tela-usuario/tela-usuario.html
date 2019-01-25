@@ -8,8 +8,10 @@
   <ion-content padding>
 
           <ion-item>
-          <ion-avatar item-start>
-              <img src="assets/imgs/nome.png" (click)="openAlterarFoto()">
+          <ion-avatar item-start (click)="openAlterarFoto()">
+              <ion-fab top left >
+                  <button ion-fab>{{sigla}}</button>
+                  </ion-fab>
             </ion-avatar>
             <div *ngIf= "user != null">
               <p>{{user.nome}}</p>

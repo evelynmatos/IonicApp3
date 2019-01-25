@@ -23,40 +23,51 @@ import { PostProvider } from '../../providers/post/post';
 })
 export class TelaUsuarioPage {
 
-  post:any;  
+  post: any;
   user = this.navParams.get("user");
+  public sigla;
 
- 
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private postProv: PostProvider) {
   }
 
-    openListaMensagem(){
-    this.navCtrl.push(ListaMensagemPage.name, {'id':this.user.id}); 
-    console.log(this.user.id)
-    }
-  
-    openLogout(){
-      this.navCtrl.setRoot(LoginPage.name);
-    }
-  
-    openListaPost(){
-      this.navCtrl.push(ListaPostPage.name);
-  }
-  
-    openAlterarFoto(){
-    this.navCtrl.push(AlterarFotoPage.name); 
+  ngOnInit() {
+    this.getSigla()
   }
 
-    ionViewDidLoad() {
-      console.log(this.user)
-      this.postProv.getLatestPost().subscribe(
-        (data) =>{
-          this.post = data;
-          console.log(data);
-        }, error=> {
-          console.log(error);
-        })
-    }
-      
-   
+  getSigla() {
+    let res = this.user.nome.split(" ")
+    let nome = res[0].charAt(0)
+    let sobrenome = res[res.length - 1].charAt(0)
+    this.sigla = nome + sobrenome
+
+  }
+  openListaMensagem() {
+    this.navCtrl.push(ListaMensagemPage.name, { 'id': this.user.id });
+    console.log(this.user.id)
+  }
+
+  openLogout() {
+    this.navCtrl.setRoot(LoginPage.name);
+  }
+
+  openListaPost() {
+    this.navCtrl.push(ListaPostPage.name);
+  }
+
+  openAlterarFoto() {
+    this.navCtrl.push(AlterarFotoPage.name);
+  }
+
+  ionViewDidLoad() {
+    console.log(this.user)
+    this.postProv.getLatestPost().subscribe(
+      (data) => {
+        this.post = data;
+        console.log(data);
+      }, error => {
+        console.log(error);
+      })
+  }
+
 }

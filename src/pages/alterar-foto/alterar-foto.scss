@@ -10,20 +10,12 @@ page-alterar-foto {
             margin: 0 auto;
         }
     
-    
-        #icon1 {
-            font-size: 5em;
-            margin: 0;
+        ion-icon {
+            display: inline-block;
+            font-size: 6em;
             color: dodgerblue;
             line-height: 4;
-            min-width: 195px;
-        }
-    
-        #icon2 {
-            font-size: 4em;
-            margin: 0;
-            color: dodgerblue;
-            line-height: 4;   
+            min-width: 148px;
         }
         
           p{
