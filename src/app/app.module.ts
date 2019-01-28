@@ -11,6 +11,7 @@ import { LoginProvider } from '../providers/login/login';
 import { PostProvider } from '../providers/post/post';
 import { HttpClientModule } from '@angular/common/http';
 import { MensagemProvider } from '../providers/mensagem/mensagem';
+import { Camera } from '@ionic-native/camera';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { MensagemProvider } from '../providers/mensagem/mensagem';
     IonicModule.forRoot(MyApp),
     ComponentsModule,
     LoginPageModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -35,7 +36,7 @@ import { MensagemProvider } from '../providers/mensagem/mensagem';
     LoginProvider,
     PostProvider,
     MensagemProvider,
-    
+    Camera,
   ]
 })
 export class AppModule {}
