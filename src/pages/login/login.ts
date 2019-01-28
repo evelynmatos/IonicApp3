@@ -4,48 +4,40 @@ import { TelaUsuarioPage } from '../tela-usuario/tela-usuario';
 import { AlertController } from 'ionic-angular';
 import { LoginProvider } from '../../providers/login/login';
 
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
-  providers:[
+  providers: [
     LoginProvider,
   ]
 })
 export class LoginPage {
-  
-  dadosUsuario ={
+
+  dadosUsuario = {
     user: '',
     password: ''
-    };
+  };
 
- desabilitarBotao = true;
+  desabilitarBotao = true;
 
- habilitarBotao: boolean = false;
- 
-   constructor(public navCtrl: NavController, 
-               public navParams: NavParams, 
-               private login: LoginProvider, 
-               public alertCtrl: AlertController) {}
+  habilitarBotao: boolean = false;
 
-  openTelaUsuario(){
-    
-    this.login.getLogin(this.dadosUsuario.user, this.dadosUsuario.password).then((result)=>{
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private login: LoginProvider,
+    public alertCtrl: AlertController) { }
+
+  openTelaUsuario() {
+
+    this.login.getLogin(this.dadosUsuario.user, this.dadosUsuario.password).then((result) => {
       console.log("result" + result);
-       this.navCtrl.setRoot(TelaUsuarioPage.name, {'user':result});
+      this.navCtrl.setRoot(TelaUsuarioPage.name, { 'user': result });
 
-    }).catch((error)=>{
-       console.log(error.error.erro.codigo, error.error.erro.mensagem)
-       const alert = this.alertCtrl.create({
-        title: 'ERRO! '+ error.error.erro.codigo,
+    }).catch((error) => {
+      console.log(error.error.erro.codigo, error.error.erro.mensagem)
+      const alert = this.alertCtrl.create({
+        title: 'ERRO! ' + error.error.erro.codigo,
         subTitle: error.error.erro.mensagem,
         buttons: ['OK']
       });
@@ -54,8 +46,8 @@ export class LoginPage {
   }
 
 }
-  
-  
-  
 
-  
+
+
+
+

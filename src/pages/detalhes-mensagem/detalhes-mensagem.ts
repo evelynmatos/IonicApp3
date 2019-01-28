@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the DetalhesMensagemPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { LoadingController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -15,16 +9,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DetalhesMensagemPage {
 
+  public loader;
   mensagem;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
 
     this.mensagem = this.navParams.get('mensagem'); 
 
   }
 
-  ionViewDidLoad() {
+  abreCarregando() {
+    this.loader = this.loadingCtrl.create({
+        content: "Carregando detalhes...",
+      });
+      this.loader.present();
+    }
+  
+    fechaCarregando(){
+      this.loader.dismiss();
+    }
+
+  ionViewDidEnter() {
+    this.abreCarregando();
     console.log('ionViewDidLoad DetalhesMensagemPage');
+   this.fechaCarregando();
   }
 
 }

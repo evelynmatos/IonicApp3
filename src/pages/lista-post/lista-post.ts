@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PostProvider } from '../../providers/post/post';
-
-/**
- * Generated class for the ListaPostPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { LoadingController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -19,18 +13,55 @@ import { PostProvider } from '../../providers/post/post';
 })
 export class ListaPostPage {
   
-  public list:any = new Array;    
+  public list:any = new Array;
+  public loader; 
+  public refresher;
+  public isRefresher: boolean = false;   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,  private postProv: PostProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,  private postProv: PostProvider, 
+    public loadingCtrl: LoadingController) {
   }
 
-  ionViewDidLoad() {
+  abreCarregando() {
+    this.loader = this.loadingCtrl.create({
+        content: "Carregando posts...",
+      });
+      this.loader.present();
+    }
+  
+    fechaCarregando(){
+      this.loader.dismiss();
+    }
+
+    doRefresh(refresher) {
+      this.refresher = refresher;
+      this.isRefresher = true;
+      this.carregarPosts();
+  
+    }
+    ionViewDidEnter() {
+      this.carregarPosts();
+  
+    }
+
+    carregarPosts() {
+    this.abreCarregando();
     this.postProv.getListaPost().subscribe(
     (data)=>{
       this.list = data;
       console.log(data);
+      this.fechaCarregando();
+      if(this.isRefresher){
+        this.refresher.complete();
+        this.isRefresher = false;
+      }
     }, error=> {
       console.log(error);
+      this.fechaCarregando();
+      if(this.isRefresher){
+        this.refresher.complete();
+        this.isRefresher = false;
+      }
     }
     )
 }

@@ -4,6 +4,7 @@ import { DetalhesMensagemPage } from '../detalhes-mensagem/detalhes-mensagem';
 import { MensagemProvider } from '../../providers/mensagem/mensagem';
 import { FormControl } from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
+import { LoadingController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -17,21 +18,45 @@ export class ListaMensagemPage {
   public search: string = ' ';
   public controleBusca: FormControl;
   public array:Array<any>;
-
+  public loader;
+  public refresher;
+  public isRefresher: boolean = false;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    private mensagemProvider: MensagemProvider) {
+    private mensagemProvider: MensagemProvider,
+    public loadingCtrl: LoadingController) {
+      
      this.listaMensagem = new Array();
     console.log(this.id)
     this.controleBusca = new FormControl();
   }
 
-  ionViewDidLoad() {
+  abreCarregando() {
+  this.loader = this.loadingCtrl.create({
+      content: "Carregando mensagens...",
+    });
+    this.loader.present();
+  }
+
+  fechaCarregando(){
+    this.loader.dismiss();
+  }
+
+  doRefresh(refresher) {
+    this.refresher = refresher;
+    this.isRefresher = true;
+    this.carregarMensagens();
+
+  }
+  ionViewDidEnter() {
+    this.carregarMensagens();
+
+  }
+    carregarMensagens(){
     console.log('ionViewDidLoad ListaMensagemPage');
-
+    this.abreCarregando()
     this.controleBusca.valueChanges.debounceTime(400).subscribe(search => {
-
       this.setFiltraMensagens();
 
     });
@@ -42,8 +67,18 @@ export class ListaMensagemPage {
         this.listaMensagem = data;
         this.array = this.listaMensagem;
         console.log(this.array)
+        this.fechaCarregando();
+        if(this.isRefresher){
+          this.refresher.complete();
+          this.isRefresher = false;
+        }
       }, error => {
         console.log(error);
+        this.fechaCarregando();
+        if(this.isRefresher){
+          this.refresher.complete();
+          this.isRefresher = false;
+        }
       }
     )
 

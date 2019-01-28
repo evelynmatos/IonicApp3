@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
 
-/**
- * Generated class for the DetalhesPostPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,14 +10,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DetalhesPostPage {
 
-  item= this.navParams.get('item');
+  item = this.navParams.get('item');
+  public loader;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
   }
 
-  ionViewDidLoad() {
-    this.item.data = this.navParams.get('data'); 
+  abreCarregando() {
+    this.loader = this.loadingCtrl.create({
+      content: "Carregando detalhes...",
+    });
+    this.loader.present();
+  }
+
+  fechaCarregando() {
+    this.loader.dismiss();
+  }
+
+  ionViewDidEnter() {
+    this.abreCarregando();
+    this.item.data = this.navParams.get('data');
+    this.fechaCarregando();
   }
 
 }
