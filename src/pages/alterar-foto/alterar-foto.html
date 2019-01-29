@@ -15,10 +15,11 @@
 <ion-content padding>
   <h6>Selecione uma foto para o seu perfil</h6>
   <pre>
-  <img src="assets/imgs/pessoa.png">
+  <img *ngIf="photo == null" src="assets/imgs/pessoa.png">
+  <img *ngIf="photo != null" src="{{photo}}">
   </pre>
  <ul>
-    <ion-icon name="camera"></ion-icon>    
-    <ion-icon style=text-align:left; name="photos"></ion-icon>  
+    <ion-icon (click)="takePicture('foto')" name="camera"></ion-icon>    
+    <ion-icon (click)="takePicture('galery')" style=text-align:left; name="photos"></ion-icon>  
   </ul>
 </ion-content>

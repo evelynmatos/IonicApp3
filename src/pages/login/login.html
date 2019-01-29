@@ -10,7 +10,7 @@
 
   <ion-item>
     <ion-label floating><b> Usuário</b></ion-label>
-    <ion-input #user id="user" type="text" minlength="3" maxlength="20" [(ngModel)]="dadosUsuario.user" ></ion-input>
+    <ion-input #user id="user" type="text" value="lembrar" minlength="3" maxlength="20" [(ngModel)]="dadosUsuario.user" ></ion-input>
   </ion-item>
 
   <ion-item>
@@ -22,7 +22,7 @@
   <pre>
   <ion-item>
     <ion-label>Lembrar</ion-label>  
-    <ion-checkbox color="dark"></ion-checkbox>
+    <ion-checkbox [(ngModel)]="box" color="dark"></ion-checkbox>
   </ion-item>
 </pre>
 

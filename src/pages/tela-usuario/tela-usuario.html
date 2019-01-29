@@ -10,7 +10,8 @@
           <ion-item>
           <ion-avatar item-start (click)="openAlterarFoto()">
               <ion-fab top left >
-                  <button ion-fab>{{sigla}}</button>
+                  <div *ngIf="foto == null" ion-fab>{{sigla}}</div>
+                  <img *ngIf="foto != null" src="{{foto}}">
                   </ion-fab>
             </ion-avatar>
             <div *ngIf= "user != null">
