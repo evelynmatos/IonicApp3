@@ -30,7 +30,7 @@ export class LoginPage {
   };
  
   box: boolean;
-  lembrar = this.storage.getLembrar();
+  lembrar;
   
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -40,12 +40,15 @@ export class LoginPage {
       
     }
 
+    ngOnInit(){
+      this.getUsuario();
+    }
+
   openTelaUsuario() {
-    this.getUsuario();
+    this.setUsuario();
     this.login.getLogin(this.dadosUsuario.user, this.dadosUsuario.password).then((result: any) => {
       console.log("result" + result);
       this.storage.salvarUsuario(result);
-      this.storage.lembrar(this.dadosUsuario.user);
       this.navCtrl.setRoot(TelaUsuarioPage.name);
 
     }).catch((error) => {
@@ -60,10 +63,17 @@ export class LoginPage {
   }
 
   getUsuario(){
+    this.storage.getLembrar().then((result: any) =>{
+      this.lembrar = result;
+    })
+  }
+  
+
+  setUsuario(){
     if(this.box){
       this.storage.lembrar(this.dadosUsuario.user);
     }else{
-      console.log("usuario nao salvo")
+      this.storage.removeLembrar();
     }
   }
 

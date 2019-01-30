@@ -43,4 +43,8 @@ export class StorageProvider {
     return this.storage.get('lembrar');
   }
 
+  public removeLembrar(){
+    return this.storage.remove('lembrar');
+  }
+
 }
