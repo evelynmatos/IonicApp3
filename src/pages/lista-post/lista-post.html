@@ -8,5 +8,7 @@
 
     <div *ngIf ="list.length != null"></div>
   <comp-post *ngFor="let item of list" [feed]="item"></comp-post>
+  <div *ngIf ="list.length != null"></div>
+      <h3>Não há posts </h3>
 
 </ion-content>
