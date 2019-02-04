@@ -65,7 +65,6 @@ export class TelaUsuarioPage {
     }
 
     openLogout() {
-      this.navCtrl.setRoot(LoginPage.name);
       let alert = this.alertCtrl.create({
         title: 'Confirmar logout',
         message: 'Deseja sair da sessão?',
@@ -73,21 +72,18 @@ export class TelaUsuarioPage {
           {
             text: 'Não',
             role: 'cancel',
-            handler: () => {
-              console.log('Sessão Cancelada');
-            }
           },
           {
             text: 'Sim',
             handler: () => {
               console.log('Sessão finalizada');
+              this.navCtrl.setRoot(LoginPage.name);
             }
           }
         ]
       });
       alert.present();
-    }
-    
+    }   
 
     openListaPost() {
       this.navCtrl.push(ListaPostPage.name);
