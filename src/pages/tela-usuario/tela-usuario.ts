@@ -5,35 +5,43 @@ import { LoginPage } from '../login/login';
 import { AlterarFotoPage } from '../alterar-foto/alterar-foto';
 import { ListaPostPage } from '../lista-post/lista-post';
 import { PostProvider } from '../../providers/post/post';
+import { StorageProvider } from '../../providers/storage/storage';
 
-/**
- * Generated class for the TelaUsuarioPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
   selector: 'page-tela-usuario',
   templateUrl: 'tela-usuario.html',
   providers: [
-    PostProvider
+    PostProvider,
+    StorageProvider
   ]
 })
 export class TelaUsuarioPage {
 
   post: any;
-  user = this.navParams.get("user");
+  user: any;
   public sigla;
+  public foto: any;
+  id:any;
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private postProv: PostProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private postProv: PostProvider, private storage: StorageProvider) {
   }
+
 
   ngOnInit() {
-    this.getSigla()
+    this.storage.getUsuario().then(result => {
+      this.user = (result);
+      console.log(this.user)
+      this.getSigla();
+      this.getImagem();
+    })
   }
+
+  ionViewWillEnter(){
+    this.getImagem();
+  }
+
 
   getSigla() {
     let res = this.user.nome.split(" ")
@@ -42,12 +50,20 @@ export class TelaUsuarioPage {
     this.sigla = nome + sobrenome
 
   }
+
+  getImagem(){
+    this.storage.getFoto(String(this.id)).then(result=> {
+      this.foto = result;
+      console.log(this.foto);
+    })
+  }
+
   openListaMensagem() {
     this.navCtrl.push(ListaMensagemPage.name, { 'id': this.user.id });
-    console.log(this.user.id)
   }
 
   openLogout() {
+    this.storage.remover();
     this.navCtrl.setRoot(LoginPage.name);
   }
 
@@ -56,11 +72,11 @@ export class TelaUsuarioPage {
   }
 
   openAlterarFoto() {
-    this.navCtrl.push(AlterarFotoPage.name);
+    console.log(this.user.id)
+    this.navCtrl.push(AlterarFotoPage.name, {'id': this.user.id});
   }
 
   ionViewDidLoad() {
-    console.log(this.user)
     this.postProv.getLatestPost().subscribe(
       (data) => {
         this.post = data;

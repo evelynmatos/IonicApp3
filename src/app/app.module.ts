@@ -11,7 +11,10 @@ import { LoginProvider } from '../providers/login/login';
 import { PostProvider } from '../providers/post/post';
 import { HttpClientModule } from '@angular/common/http';
 import { MensagemProvider } from '../providers/mensagem/mensagem';
+import { IonicStorageModule } from '@ionic/storage';
+import { TelaUsuarioPageModule } from '../pages/tela-usuario/tela-usuario.module';
 import { Camera } from '@ionic-native/camera';
+import { StorageProvider } from '../providers/storage/storage';
 
 
 @NgModule({
@@ -24,6 +27,8 @@ import { Camera } from '@ionic-native/camera';
     ComponentsModule,
     LoginPageModule,
     HttpClientModule,
+    IonicStorageModule.forRoot(),
+    TelaUsuarioPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,7 +41,8 @@ import { Camera } from '@ionic-native/camera';
     LoginProvider,
     PostProvider,
     MensagemProvider,
-    Camera,
+    StorageProvider,
+    Camera
   ]
 })
 export class AppModule {}

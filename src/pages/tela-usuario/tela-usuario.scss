@@ -1,8 +1,8 @@
 page-tela-usuario {
 
     .item ion-avatar img {
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
     }
 
     #sair {
@@ -19,4 +19,11 @@ page-tela-usuario {
   ion-card-content.card-content.card-content {
     background-color: #D6D6D6;
 }
+
+img{
+    border-radius: 50%;
+    overflow: hidden;
+    width: 70px;
+    height: 70px;
+  }
 }

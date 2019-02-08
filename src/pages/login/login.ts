@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TelaUsuarioPage } from '../tela-usuario/tela-usuario';
 import { AlertController } from 'ionic-angular';
 import { LoginProvider } from '../../providers/login/login';
+import { StorageProvider } from '../../providers/storage/storage';
 
 
 /**
@@ -16,36 +17,44 @@ import { LoginProvider } from '../../providers/login/login';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
-  providers:[
+  providers: [
     LoginProvider,
+    StorageProvider
   ]
 })
 export class LoginPage {
-  
-  dadosUsuario ={
+
+  dadosUsuario = {
     user: '',
     password: ''
-    };
-
- desabilitarBotao = true;
-
- habilitarBotao: boolean = false;
+  };
  
-   constructor(public navCtrl: NavController, 
-               public navParams: NavParams, 
-               private login: LoginProvider, 
-               public alertCtrl: AlertController) {}
+  box: boolean;
+  lembrar;
+  
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private login: LoginProvider,
+    public alertCtrl: AlertController,
+    public storage: StorageProvider) {
+      
+    }
 
-  openTelaUsuario(){
-    
-    this.login.getLogin(this.dadosUsuario.user, this.dadosUsuario.password).then((result)=>{
+    ngOnInit(){
+      this.getUsuario();
+    }
+
+  openTelaUsuario() {
+    this.setUsuario();
+    this.login.getLogin(this.dadosUsuario.user, this.dadosUsuario.password).then((result: any) => {
       console.log("result" + result);
-       this.navCtrl.setRoot(TelaUsuarioPage.name, {'user':result});
+      this.storage.salvarUsuario(result);
+      this.navCtrl.setRoot(TelaUsuarioPage.name);
 
-    }).catch((error)=>{
-       console.log(error.error.erro.codigo, error.error.erro.mensagem)
-       const alert = this.alertCtrl.create({
-        title: 'ERRO! '+ error.error.erro.codigo,
+    }).catch((error) => {
+      console.log(error.error.erro.codigo, error.error.erro.mensagem)
+      const alert = this.alertCtrl.create({
+        title: 'ERRO! ' + error.error.erro.codigo,
         subTitle: error.error.erro.mensagem,
         buttons: ['OK']
       });
@@ -53,9 +62,25 @@ export class LoginPage {
     })
   }
 
-}
-  
-  
+  getUsuario(){
+    this.storage.getLembrar().then((result: any) =>{
+      this.lembrar = result;
+    })
+  }
   
 
-  
+  setUsuario(){
+    if(this.box){
+      this.storage.lembrar(this.dadosUsuario.user);
+    }else{
+      this.storage.removeLembrar();
+    }
+  }
+
+
+}
+
+
+
+
+
